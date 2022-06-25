@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import {ShopContext} from "../context"
+
 export default function BasketItem(props) {
-  const { id, name, price, quantity, incrementQuantity, decrementQuantity } = props;
+  const { id, name, price, quantity  } = props;
+
+  const {incrementQuantity, decrementQuantity, removeFromBasket} = useContext(ShopContext)
   return(
     <li className="collection-item">
       {name} x{quantity} = {price * quantity} <b>$</b>
@@ -13,7 +18,7 @@ export default function BasketItem(props) {
         <i className="material-icons left">exposure_neg_1</i>remove
       </a>
       <a className="waves-effect waves-light btn btnq" 
-      onClick={() => props.removeFromBasket(id)} 
+      onClick={() => removeFromBasket(id)} 
       >
         <i className="material-icons basket-delete"
        >delete_forever</i> delete

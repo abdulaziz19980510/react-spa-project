@@ -1,6 +1,10 @@
-function GoodItem(props) {
-    const { id, name, description, price, full_background, addToBasket } = props;
+import {useContext} from "react";
+import {ShopContext} from "../context";
 
+function GoodItem(props) {
+    const { id, name, description, price, full_background } = props;
+
+    const {addToBasket} = useContext(ShopContext)
 
     return (
         <div className="card" id={id}>
